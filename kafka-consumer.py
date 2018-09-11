@@ -1,4 +1,6 @@
 from confluent_kafka import Consumer, KafkaError
+from crud import Es
+import json
 
 c = Consumer({
     'bootstrap.servers': '127.0.0.1:9092',
@@ -11,6 +13,7 @@ c = Consumer({
 c.subscribe(['mytopic'])
 
 while True:
+
     msg = c.poll(1.0)
 
     if msg is None:
